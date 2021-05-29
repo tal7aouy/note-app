@@ -25,21 +25,24 @@ const App = () => {
       content: text,
       date: new Date().toLocaleDateString(),
     }
-   axios.post('http://localhost:3000/notes',NewNote).then(resp=>{
-     console.log("success");
-     fetchNotes()
-   }).catch(err=>console.log(err))
+    axios
+      .post('http://localhost:3000/notes', NewNote)
+      .then((resp) => {
+        console.log('success')
+        fetchNotes()
+      })
+      .catch((err) => console.log(err))
   }
   // remove Note
   const removeNote = (id) => {
     // const newNotes = notes.filter((note) => note.id !== id)
-     axios
-       .delete(`http://localhost:3000/notes/${id}`)
-       .then((resp) => {
-         console.log("note removed")
-         fetchNotes()
-       })
-       .catch((err) => console.log(err))
+    axios
+      .delete(`http://localhost:3000/notes/${id}`)
+      .then((resp) => {
+        console.log('note removed')
+        fetchNotes()
+      })
+      .catch((err) => console.log(err))
   }
   return (
     <div className={darkMode ? 'dark-mode' : ''}>
